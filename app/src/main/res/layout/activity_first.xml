@@ -8,12 +8,20 @@
     android:fitsSystemWindows="true"
     >
 
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/tool_bar"
             android:layout_width="match_parent"
             android:layout_height="150dp"
@@ -22,22 +30,28 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"
-                android:src="@mipmap/ic_launcher"/>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                ></android.support.v4.view.ViewPager>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello"/>
-        </LinearLayout>
-    </android.support.design.widget.AppBarLayout>
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal"/>
+        </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v7.widget.RecyclerView>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:tabIndicatorColor="@color/teal"
+            app:tabBackground="@drawable/tablayout_bg1"></android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
 
 </android.support.design.widget.CoordinatorLayout>
