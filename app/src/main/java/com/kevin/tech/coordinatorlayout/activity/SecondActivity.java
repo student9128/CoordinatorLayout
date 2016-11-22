@@ -31,7 +31,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        mCollapsingToolbarLayout.setTitle("This is CollapsintToolBar");
+        mCollapsingToolbarLayout.setTitle("Kevin");
         mCollapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(SecondActivity.this, R.color.white));
         mCollapsingToolbarLayout.setStatusBarScrimColor(ContextCompat.getColor(SecondActivity.this, R.color.colorAccent));
         iniData();

@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.kevin.tech.coordinatorlayout.activity.FirstActivity;
 import com.kevin.tech.coordinatorlayout.activity.SecondActivity;
+import com.kevin.tech.coordinatorlayout.activity.ThirdActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mBtnFirst, mBtnSecond, mBtnThird;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(MainActivity.this, SecondActivity.class));
                 break;
             case R.id.btn_third:
+                startActivity(new Intent(MainActivity.this, ThirdActivity.class));
                 break;
             default:
                 break;

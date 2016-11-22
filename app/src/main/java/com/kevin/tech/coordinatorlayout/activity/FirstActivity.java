@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.kevin.tech.coordinatorlayout.R;
 import com.kevin.tech.coordinatorlayout.adapter.MyViewPagerAdapter;
@@ -45,7 +44,6 @@ public class FirstActivity extends AppCompatActivity {
     private MyViewPagerAdapter mAdapter;
     private Timer mTimer;
     private static final int UPDATE_VIEWPAGER = 100;
-    private int autoCurrIndex;
     private boolean isLoop = true;
 
     @Override
@@ -60,17 +58,22 @@ public class FirstActivity extends AppCompatActivity {
         mIndicator = (LinearLayout) findViewById(R.id.indicator);
         mAdapter = new MyViewPagerAdapter(this, mImageArr);
         mViewPagerTop.setAdapter(mAdapter);
+
+        mAdapterBottom = new TabFragmentPagerAdapeter(getSupportFragmentManager());
+        mViewPagerBottom.setAdapter(mAdapterBottom);
+        mTabLayout.setupWithViewPager(mViewPagerBottom);
+        iniData();
+
+
         mViewPagerTop.setCurrentItem(5000 * (mImageArr.length));
         mViewPagerTop.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        Toast.makeText(FirstActivity.this, "Down", Toast.LENGTH_SHORT).show();
                         isLoop = false;
                         break;
                     case MotionEvent.ACTION_UP:
-                        Toast.makeText(FirstActivity.this, "Up", Toast.LENGTH_SHORT).show();
                         isLoop = true;
                         break;
                 }
@@ -87,7 +90,7 @@ public class FirstActivity extends AppCompatActivity {
                     handler.sendMessage(message);
                 }
             }
-        }, 1000, 1000);//这里定义了轮播图切换的间隔时间
+        }, 3000, 5000);//这里定义了轮播图切换的间隔时间
         mViewPagerTop.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -106,10 +109,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        mAdapterBottom = new TabFragmentPagerAdapeter(getSupportFragmentManager());
-        mViewPagerBottom.setAdapter(mAdapterBottom);
-        mTabLayout.setupWithViewPager(mViewPagerBottom);
-        iniData();
+
     }
 
     private void iniData() {
@@ -148,8 +148,6 @@ public class FirstActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isLooper;
-    private static final int SCROLL_WHAT = 1;
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
